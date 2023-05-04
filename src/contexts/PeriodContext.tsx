@@ -4,13 +4,13 @@ import { createContext, useState, ReactNode } from "react";
 interface IPeriodContext {
   period: {
     dayOne: string;
-    dayTwo: string | undefined;
+    dayTwo: string;
     month: string;
     year: string;
   };
   setPeriod: (period: {
     dayOne: string;
-    dayTwo: string | undefined;
+    dayTwo: string;
     month: string;
     year: string;
   }) => void;
@@ -26,13 +26,18 @@ interface IPeriodContextProvider {
 }
 
 export const PeriodContextProvider = ({ children }: IPeriodContextProvider) => {
-  const [period, setPeriod] = useState({
-    dayOne: "",
-    dayTwo: "",
-    month: "Jan",
-    year: "2020",
-  });
-
+  // const [period, setPeriod] = useState({
+  //   dayOne: "",
+  //   dayTwo: "",
+  //   month: "Jan",
+  //   year: "2020",
+  // });
+  const [period, setPeriod] = useState<{
+    dayOne: string;
+    dayTwo?: string;
+    month: string;
+    year: string;
+  }>({ dayOne: "", dayTwo: "", month: "", year: "" });
   return (
     <periodContext.Provider value={{ period, setPeriod }}>
       {children}

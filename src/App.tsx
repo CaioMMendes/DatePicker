@@ -6,6 +6,9 @@ interface MonthState {
   name: string[];
   number: number;
 }
+interface IMonthNameIndex {
+  [key: string]: number;
+}
 function App() {
   const [calendar, setCalendar] = useState(true);
   const [year, setYear] = useState(new Date().getFullYear());
@@ -13,6 +16,20 @@ function App() {
     name: new Date().toLocaleString("pt-BR", { month: "long" }).split(" "),
     number: new Date().getMonth(),
   });
+  const monthNameIndex: IMonthNameIndex = {
+    "janeiro": 0,
+    "fevereiro": 1,
+    "março": 2,
+    "abril": 3,
+    "maio": 4,
+    "junho": 5,
+    "julho": 6,
+    "agosto": 7,
+    "setembro": 8,
+    "outubro": 9,
+    "novembro": 10,
+    "dezembro": 11,
+  };
   const [day, setDay] = useState(new Date().getDate());
   const date = new Date(Date.now());
   const handleShowCalendar = () => {
@@ -21,10 +38,11 @@ function App() {
   // const teste = <input type="text" />;
 
   return (
-    <div className=" container mt-36  flex  justify-center">
+    <div className=" container mt-36  flex   justify-center">
+      <input type="color" name="color" id="" />
       <div
         id="datePicker"
-        className="flex w-[344px] flex-col gap-6 rounded-[16px] bg-zinc-600 p-8"
+        className="flex w-[344px] flex-col gap-6 rounded-[16px] bg-zinc-600 p-8 shadow-lg"
       >
         <div
           id="monthSelector"
@@ -49,9 +67,10 @@ function App() {
                     setMonth({
                       ...month,
                       name: [monthName],
-                      number: month.number - 1,
+                      //todo resolver isso, o numero ta 1x menor ou maior não sei
+                      number: monthNameIndex[monthName],
                     });
-                    console.log(month.name[0]);
+                    console.log(month.number);
                   }
             }
           >
@@ -89,7 +108,7 @@ function App() {
                     setMonth({
                       ...month,
                       name: [monthName],
-                      number: month.number + 1,
+                      number: monthNameIndex[monthName],
                     });
                     console.log(month.number);
                   }
@@ -99,7 +118,7 @@ function App() {
           </div>
         </div>
         {calendar ? (
-          <div id="calendar" className="h-[316px] w-full bg-red-300">
+          <div id="calendar" className="w-full bg-red-300">
             <Days month={month} year={year} />
           </div>
         ) : (
