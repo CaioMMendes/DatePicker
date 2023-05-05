@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { diasSelecionadosContext } from "./contexts/DiasSelecionados";
 import "./App.css";
 import Months from "./components/Months";
+import Years from "./components/Years";
 import Days from "./components/Days";
 interface MonthState {
   name: string[];
@@ -10,7 +12,14 @@ interface IMonthNameIndex {
   [key: string]: number;
 }
 function App() {
+  const {
+    primeiroDiaSelecionado,
+
+    segundoDiaSelecionado,
+  } = useContext(diasSelecionadosContext);
+
   const [calendar, setCalendar] = useState(true);
+  const [showYear, setShowYear] = useState(false);
   const [year, setYear] = useState(new Date().getFullYear());
   const [month, setMonth] = useState<MonthState>({
     name: new Date().toLocaleString("pt-BR", { month: "long" }).split(" "),
@@ -63,14 +72,12 @@ function App() {
                       2023,
                       month.number - 1
                     ).toLocaleString("pt-br", { month: "long" });
-                    console.log(month.name[0]);
                     setMonth({
                       ...month,
                       name: [monthName],
                       //todo resolver isso, o numero ta 1x menor ou maior não sei
                       number: monthNameIndex[monthName],
                     });
-                    console.log(month.number);
                   }
             }
           >
@@ -86,7 +93,12 @@ function App() {
               {year}
             </div>
           ) : (
-            <div className="flex w-full items-center justify-center bg-orange-400 font-semibold">
+            <div
+              className="flex w-14 cursor-pointer items-center justify-center bg-orange-400 font-semibold"
+              onClick={() => {
+                setShowYear(true);
+              }}
+            >
               {year}
             </div>
           )}
@@ -110,7 +122,6 @@ function App() {
                       name: [monthName],
                       number: monthNameIndex[monthName],
                     });
-                    console.log(month.number);
                   }
             }
           >
@@ -121,18 +132,47 @@ function App() {
           <div id="calendar" className="w-full bg-red-300">
             <Days month={month} year={year} />
           </div>
+        ) : showYear ? (
+          <Years setShowYear={setShowYear} year={year} setYear={setYear} />
         ) : (
           <div id="year" className="h-[208px] w-[280px] bg-green-400">
             <Months setCalendar={setCalendar} setMonth={setMonth} />
           </div>
         )}
+        <div
+          id="datePicked"
+          className={`${
+            primeiroDiaSelecionado === null && segundoDiaSelecionado === null
+              ? "hidden"
+              : ""
+          } `}
+        >
+          <p>Período:</p>
+          <div className="flex items-center justify-center bg-cyan-500">
+            <p
+              className={`${
+                primeiroDiaSelecionado ? "" : "hidden"
+              } font-medium`}
+            >
+              {primeiroDiaSelecionado?.dia} {primeiroDiaSelecionado?.nomeMes}
+              {" de "}
+              {primeiroDiaSelecionado?.ano}
+              {segundoDiaSelecionado && " a  "}
+            </p>
+            &nbsp;
+            <p
+              className={`${
+                segundoDiaSelecionado ? "" : "hidden"
+              } flex  font-medium`}
+            >
+              {" "}
+              {segundoDiaSelecionado?.dia} {segundoDiaSelecionado?.nomeMes}
+              {" de "}
+              {segundoDiaSelecionado?.ano}
+            </p>
+          </div>
+        </div>
       </div>
-      <button onClick={handleShowCalendar}>Change</button>
-      {year}
-      <br />
-      {day}
-      <br />
-      {/* {month} */}
     </div>
   );
 }

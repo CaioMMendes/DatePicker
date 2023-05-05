@@ -1,13 +1,12 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { PeriodContextProvider } from "./contexts/PeriodContext.tsx";
+import { DiasSelecionadosProvider } from "./contexts/DiasSelecionados.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
-  <PeriodContextProvider>
+  <DiasSelecionadosProvider>
     <App />
-  </PeriodContextProvider>
+  </DiasSelecionadosProvider>
   // </React.StrictMode>
 );
