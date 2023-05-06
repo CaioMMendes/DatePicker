@@ -1,14 +1,9 @@
-// import { periodContext } from "../contexts/PeriodContext";
-import { useContext, Dispatch, SetStateAction, useState } from "react";
+import { useContext } from "react";
 import { diasSelecionadosContext } from "../contexts/DiasSelecionados";
 interface MonthState {
   name: string[];
   number: number;
 }
-// interface Months {
-//     abbreviation: string;
-//     name: string[];
-//     number: number;
 
 interface DaysProps {
   year: number;
@@ -17,12 +12,7 @@ interface DaysProps {
 interface IDayNameIndex {
   [key: string]: number;
 }
-interface Dia {
-  dia: number;
-  mes: number;
-  nomeMes: string;
-  ano: number;
-}
+
 const Days = ({ month, year }: DaysProps) => {
   const {
     primeiroDiaSelecionado,
@@ -56,9 +46,7 @@ const Days = ({ month, year }: DaysProps) => {
   const diasDoMes = (mes: number, ano: number) => {
     return new Date(ano, mes, 0).getDate();
   };
-  const monthName = new Date(2023, 1).toLocaleString("pt-br", {
-    month: "long",
-  });
+
   const diasDoMesAtual = diasDoMes(month.number + 1, year);
   //todo tem que ver o que acontece quando o mes atual é dezembro
   const diasDoMesAnterior = diasDoMes(month.number, year);
@@ -166,88 +154,107 @@ const Days = ({ month, year }: DaysProps) => {
     if (primeiroDiaSelecionado === null || segundoDiaSelecionado === null) {
       return;
     }
-    if (ano > primeiroDiaSelecionado?.ano && ano < segundoDiaSelecionado?.ano) {
+
+    const dataInicial = new Date(
+      `${primeiroDiaSelecionado.ano}-${primeiroDiaSelecionado.mes + 1}-${
+        primeiroDiaSelecionado.dia
+      }`
+    ).getTime();
+    const dataFinal = new Date(
+      `${segundoDiaSelecionado.ano}-${segundoDiaSelecionado.mes + 1}-${
+        segundoDiaSelecionado.dia
+      }`
+    ).getTime();
+    const dataAtual = new Date(`${ano}-${mes + 1}-${dia}`).getTime();
+
+    if (dataAtual >= dataInicial && dataAtual <= dataFinal) {
       return true;
+    } else {
+      return false;
     }
-    if (
-      ano === primeiroDiaSelecionado?.ano &&
-      ano < segundoDiaSelecionado?.ano
-    ) {
-      if (mes > primeiroDiaSelecionado?.mes) {
-        return true;
-      }
-      if (mes === primeiroDiaSelecionado?.mes) {
-        if (dia >= primeiroDiaSelecionado?.dia) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-    if (
-      ano === segundoDiaSelecionado?.ano &&
-      ano > primeiroDiaSelecionado?.ano
-    ) {
-      if (mes < segundoDiaSelecionado?.mes) {
-        return true;
-      }
-      if (mes === segundoDiaSelecionado?.mes) {
-        if (dia <= segundoDiaSelecionado?.dia) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
+    //Lógica para comparar se o dia esta dentro do limite sem usar o Date
+    // if (ano > primeiroDiaSelecionado?.ano && ano < segundoDiaSelecionado?.ano) {
+    //   return true;
+    // }
+    // if (
+    //   ano === primeiroDiaSelecionado?.ano &&
+    //   ano < segundoDiaSelecionado?.ano
+    // ) {
+    //   if (mes > primeiroDiaSelecionado?.mes) {
+    //     return true;
+    //   }
+    //   if (mes === primeiroDiaSelecionado?.mes) {
+    //     if (dia >= primeiroDiaSelecionado?.dia) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   } else {
+    //     return false;
+    //   }
+    // }
+    // if (
+    //   ano === segundoDiaSelecionado?.ano &&
+    //   ano > primeiroDiaSelecionado?.ano
+    // ) {
+    //   if (mes < segundoDiaSelecionado?.mes) {
+    //     return true;
+    //   }
+    //   if (mes === segundoDiaSelecionado?.mes) {
+    //     if (dia <= segundoDiaSelecionado?.dia) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   } else {
+    //     return false;
+    //   }
+    // }
 
-    if (
-      ano === primeiroDiaSelecionado?.ano &&
-      ano === segundoDiaSelecionado?.ano
-    ) {
-      if (
-        mes > primeiroDiaSelecionado?.mes &&
-        mes < segundoDiaSelecionado?.mes
-      ) {
-        return true;
-      }
-      if (
-        mes === primeiroDiaSelecionado?.mes &&
-        mes === segundoDiaSelecionado.mes
-      ) {
-        if (
-          dia > primeiroDiaSelecionado?.dia &&
-          dia < segundoDiaSelecionado?.dia
-        ) {
-          return true;
-        }
-      }
+    // if (
+    //   ano === primeiroDiaSelecionado?.ano &&
+    //   ano === segundoDiaSelecionado?.ano
+    // ) {
+    //   if (
+    //     mes > primeiroDiaSelecionado?.mes &&
+    //     mes < segundoDiaSelecionado?.mes
+    //   ) {
+    //     return true;
+    //   }
+    //   if (
+    //     mes === primeiroDiaSelecionado?.mes &&
+    //     mes === segundoDiaSelecionado.mes
+    //   ) {
+    //     if (
+    //       dia > primeiroDiaSelecionado?.dia &&
+    //       dia < segundoDiaSelecionado?.dia
+    //     ) {
+    //       return true;
+    //     }
+    //   }
 
-      if (
-        mes !== segundoDiaSelecionado.mes &&
-        mes === primeiroDiaSelecionado.mes
-      ) {
-        if (dia > primeiroDiaSelecionado.dia) {
-          return true;
-        } else {
-          return false;
-        }
-      }
+    //   if (
+    //     mes !== segundoDiaSelecionado.mes &&
+    //     mes === primeiroDiaSelecionado.mes
+    //   ) {
+    //     if (dia > primeiroDiaSelecionado.dia) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }
 
-      if (
-        mes === segundoDiaSelecionado.mes &&
-        mes !== primeiroDiaSelecionado.mes
-      ) {
-        if (dia < segundoDiaSelecionado.dia) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }
+    //   if (
+    //     mes === segundoDiaSelecionado.mes &&
+    //     mes !== primeiroDiaSelecionado.mes
+    //   ) {
+    //     if (dia < segundoDiaSelecionado.dia) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }
+    // }
   };
   const stylesPrimeiroSelecionado = `${
     segundoDiaSelecionado === null
@@ -270,7 +277,7 @@ const Days = ({ month, year }: DaysProps) => {
             return (
               <td
                 key={index}
-                className="flex h-8  w-10 items-center justify-center "
+                className="flex h-8  w-10 cursor-default items-center justify-center "
               >
                 {days[0]}
               </td>
@@ -394,7 +401,7 @@ const Days = ({ month, year }: DaysProps) => {
                        month.number + 1,
                        year
                      ) && stylesSegundoSelecionado
-                   } cursor-default text-zinc-800 hover:bg-transparent`
+                   }  cursor-default text-zinc-800 hover:cursor-default `
                       : `${
                           handlePrimeiroSelecionado(
                             stringIndex <= diasDoMesAtual ? stringIndex : count,
@@ -416,13 +423,13 @@ const Days = ({ month, year }: DaysProps) => {
                        month.number,
                        year
                      ) && stylesSegundoSelecionado
-                   } `
+                   } hover:rounded-lg  hover:bg-[#9f75da]`
                   }
                                
                     
                    
                
-                   flex h-10 w-10 cursor-pointer  items-center justify-center hover:rounded-lg  hover:bg-[#9f75da]`}
+                   flex h-10 w-10 cursor-pointer  items-center justify-center `}
                   onClick={
                     count > 0
                       ? () => {

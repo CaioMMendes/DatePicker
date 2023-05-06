@@ -39,15 +39,13 @@ function App() {
     "novembro": 10,
     "dezembro": 11,
   };
-  const [day, setDay] = useState(new Date().getDate());
-  const date = new Date(Date.now());
+
   const handleShowCalendar = () => {
     setCalendar(!calendar);
   };
-  // const teste = <input type="text" />;
 
   return (
-    <div className=" container mt-36  flex   justify-center">
+    <div className=" container mt-20  flex   justify-center">
       <input type="color" name="color" id="" />
       <div
         id="datePicker"
@@ -75,7 +73,7 @@ function App() {
                     setMonth({
                       ...month,
                       name: [monthName],
-                      //todo resolver isso, o numero ta 1x menor ou maior não sei
+
                       number: monthNameIndex[monthName],
                     });
                   }

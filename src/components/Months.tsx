@@ -1,5 +1,5 @@
 // import { periodContext } from "../contexts/PeriodContext";
-import { useContext, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface MonthState {
   name: string[];
