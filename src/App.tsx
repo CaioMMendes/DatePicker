@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className=" container mt-20  flex   justify-center">
-      <input type="color" name="color" id="" />
+
       <div
         id="datePicker"
         className="flex w-[344px] flex-col gap-6 rounded-[16px] bg-zinc-600 p-8 shadow-lg"
@@ -60,23 +60,23 @@ function App() {
             onClick={
               !calendar
                 ? () => {
+                  setYear(year - 1);
+                }
+                : () => {
+                  if (month.name[0] === "janeiro") {
                     setYear(year - 1);
                   }
-                : () => {
-                    if (month.name[0] === "janeiro") {
-                      setYear(year - 1);
-                    }
-                    const monthName = new Date(
-                      2023,
-                      month.number - 1
-                    ).toLocaleString("pt-br", { month: "long" });
-                    setMonth({
-                      ...month,
-                      name: [monthName],
+                  const monthName = new Date(
+                    2023,
+                    month.number - 1
+                  ).toLocaleString("pt-br", { month: "long" });
+                  setMonth({
+                    ...month,
+                    name: [monthName],
 
-                      number: monthNameIndex[monthName],
-                    });
-                  }
+                    number: monthNameIndex[monthName],
+                  });
+                }
             }
           >
             <p> {"<"}</p>
@@ -105,22 +105,22 @@ function App() {
             onClick={
               !calendar
                 ? () => {
+                  setYear(year + 1);
+                }
+                : () => {
+                  if (month.name[0] === "dezembro") {
                     setYear(year + 1);
                   }
-                : () => {
-                    if (month.name[0] === "dezembro") {
-                      setYear(year + 1);
-                    }
-                    const monthName = new Date(
-                      2022,
-                      month.number + 1
-                    ).toLocaleString("pt-br", { month: "long" });
-                    setMonth({
-                      ...month,
-                      name: [monthName],
-                      number: monthNameIndex[monthName],
-                    });
-                  }
+                  const monthName = new Date(
+                    2022,
+                    month.number + 1
+                  ).toLocaleString("pt-br", { month: "long" });
+                  setMonth({
+                    ...month,
+                    name: [monthName],
+                    number: monthNameIndex[monthName],
+                  });
+                }
             }
           >
             <p> {">"}</p>
@@ -139,18 +139,16 @@ function App() {
         )}
         <div
           id="datePicked"
-          className={`${
-            primeiroDiaSelecionado === null && segundoDiaSelecionado === null
+          className={`${primeiroDiaSelecionado === null && segundoDiaSelecionado === null
               ? "hidden"
               : ""
-          } `}
+            } `}
         >
           <p>Período:</p>
           <div className="flex items-center justify-center bg-cyan-500">
             <p
-              className={`${
-                primeiroDiaSelecionado ? "" : "hidden"
-              } font-medium`}
+              className={`${primeiroDiaSelecionado ? "" : "hidden"
+                } font-medium`}
             >
               {primeiroDiaSelecionado?.dia} {primeiroDiaSelecionado?.nomeMes}
               {" de "}
@@ -159,9 +157,8 @@ function App() {
             </p>
             &nbsp;
             <p
-              className={`${
-                segundoDiaSelecionado ? "" : "hidden"
-              } flex  font-medium`}
+              className={`${segundoDiaSelecionado ? "" : "hidden"
+                } flex  font-medium`}
             >
               {" "}
               {segundoDiaSelecionado?.dia} {segundoDiaSelecionado?.nomeMes}
