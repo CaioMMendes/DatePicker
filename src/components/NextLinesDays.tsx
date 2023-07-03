@@ -1,12 +1,12 @@
 import { IProps } from "./FirstLineDays";
 
-interface NextLineProps extends IProps {
+interface NextLineProps extends Omit<IProps, 'diasDoMesAnterior'> {
     diasDoMesAtual: number,
     numeroDeLinhas: 4 | 5
 }
 
 const NextLinesDays = ({
-    diasDoMesAnterior, numeroDeLinhas, diasDoMesAtual, handleDiasSelecionados, handleSegundoSelecionado, handlePrimeiroSelecionado, handleDiasEntrePrimeiroESegundo, numeroDeDiasDoMesAnterior, month, year, stylesEntrePrimeiroESegundo, stylesPrimeiroSelecionado, stylesSegundoSelecionado }: NextLineProps
+    numeroDeLinhas, diasDoMesAtual, handleDiasSelecionados, handleSegundoSelecionado, handlePrimeiroSelecionado, handleDiasEntrePrimeiroESegundo, numeroDeDiasDoMesAnterior, month, year, stylesEntrePrimeiroESegundo, stylesPrimeiroSelecionado, stylesSegundoSelecionado }: NextLineProps
 ) => {
 
     let count = 0

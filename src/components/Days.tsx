@@ -154,7 +154,6 @@ const Days = ({ month, year }: DaysProps) => {
           handleDiasSelecionados={handleDiasSelecionados}
         />
         <NextLinesDays numeroDeDiasDoMesAnterior={numeroDeDiasDoMesAnterior}
-          diasDoMesAnterior={diasDoMesAnterior}
           month={month}
           year={year}
           stylesEntrePrimeiroESegundo={stylesEntrePrimeiroESegundo}
