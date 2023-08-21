@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: #242424 url("background.png") center/cover no-repeat;
+  /* background: #242424 url("./background.png") center/cover no-repeat; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

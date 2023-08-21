@@ -1,6 +1,6 @@
 // import { periodContext } from "../contexts/PeriodContext";
 import { Dispatch, SetStateAction } from "react";
-
+import { monthsName } from "../utils/MonthsName";
 interface MonthState {
   name: string[];
   number: number;
@@ -9,28 +9,9 @@ interface MonthsProps {
   setCalendar: Dispatch<SetStateAction<boolean>>;
   setMonth: Dispatch<SetStateAction<MonthState>>;
 }
-interface Months {
-  abbreviation: string;
-  name: string[];
-  number: number;
-}
-const Months = ({ setCalendar, setMonth }: MonthsProps) => {
-  const months: Months[] = [
-    { abbreviation: "Jan", name: ["janeiro"], number: 0 },
-    { abbreviation: "Fev", name: ["fevereiro"], number: 1 },
-    { abbreviation: "Mar", name: ["março"], number: 2 },
-    { abbreviation: "Abr", name: ["abril"], number: 3 },
-    { abbreviation: "Mai", name: ["maio"], number: 4 },
-    { abbreviation: "Jun", name: ["junho"], number: 5 },
-    { abbreviation: "Jul", name: ["julho"], number: 6 },
-    { abbreviation: "Ago", name: ["agosto"], number: 7 },
-    { abbreviation: "Set", name: ["setembro"], number: 8 },
-    { abbreviation: "Out", name: ["outubro"], number: 9 },
-    { abbreviation: "Nov", name: ["novembro"], number: 10 },
-    { abbreviation: "Dez", name: ["dezembro"], number: 11 },
-  ];
-  //   const { period } = useContext(periodContext);
 
+const Months = ({ setCalendar, setMonth }: MonthsProps) => {
+  const months = monthsName;
   return (
     <table>
       <tbody className="flex flex-col gap-4">
@@ -43,7 +24,7 @@ const Months = ({ setCalendar, setMonth }: MonthsProps) => {
               const stringIndex = rowIndex * 3 + cellIndex;
               return (
                 <td
-                  className=" flex h-10 w-[82px] cursor-pointer items-center justify-center rounded-lg hover:bg-[#9f75da]"
+                  className=" flex h-10 w-[82px] cursor-pointer items-center justify-center rounded-lg text-light-primary hover:bg-light-hover hover:text-light-text-selected dark:text-dark-primary dark:hover:bg-dark-hover"
                   onClick={() => {
                     setCalendar(true);
                     setMonth({

@@ -1,6 +1,10 @@
 import { useContext } from "react";
 import { diasSelecionadosContext } from "../contexts/DiasSelecionados";
-import { firstSelected, secondSelected, betweenFirstAndSecond } from "../utils/Styles";
+import {
+  firstSelected,
+  secondSelected,
+  betweenFirstAndSecond,
+} from "../utils/Styles";
 import { dayNameIndex } from "../utils/WeekDaysIndex";
 import WeekDays from "./WeekDays";
 import FirstLineDays from "./FirstLineDays";
@@ -14,7 +18,6 @@ interface DaysProps {
   year: number;
   month: MonthState;
 }
-
 
 const Days = ({ month, year }: DaysProps) => {
   const {
@@ -47,15 +50,19 @@ const Days = ({ month, year }: DaysProps) => {
     nomeMes: string,
     ano: number
   ) => {
-    const currentDay = new Date(`"${ano}-${mes}-${dia}"`)
-    const firstDay = new Date(`${primeiroDiaSelecionado?.ano}-${primeiroDiaSelecionado?.mes}-${primeiroDiaSelecionado?.dia}`)
-    const secondDay = new Date(`${segundoDiaSelecionado?.ano}-${segundoDiaSelecionado?.mes}-${segundoDiaSelecionado?.dia}`)
+    const currentDay = new Date(`"${ano}-${mes}-${dia}"`);
+    const firstDay = new Date(
+      `${primeiroDiaSelecionado?.ano}-${primeiroDiaSelecionado?.mes}-${primeiroDiaSelecionado?.dia}`
+    );
+    const secondDay = new Date(
+      `${segundoDiaSelecionado?.ano}-${segundoDiaSelecionado?.mes}-${segundoDiaSelecionado?.dia}`
+    );
 
     //Não da para comparar datas sem usar getTime ou algo assim usando ===
     if (currentDay.getTime() === firstDay.getTime()) {
-      return setPrimeiroDiaSelecionado(null)
+      return setPrimeiroDiaSelecionado(null);
     } else if (currentDay.getTime() === secondDay.getTime()) {
-      return setSegundoDiaSelecionado(null)
+      return setSegundoDiaSelecionado(null);
     }
 
     if (primeiroDiaSelecionado === null) {
@@ -81,8 +88,6 @@ const Days = ({ month, year }: DaysProps) => {
         setSegundoDiaSelecionado(null)
       );
     }
-
-
   };
   const handlePrimeiroSelecionado = (dia: number, mes: number, ano: number) => {
     if (
@@ -116,11 +121,13 @@ const Days = ({ month, year }: DaysProps) => {
     }
 
     const dataInicial = new Date(
-      `${primeiroDiaSelecionado.ano}-${primeiroDiaSelecionado.mes + 1}-${primeiroDiaSelecionado.dia
+      `${primeiroDiaSelecionado.ano}-${primeiroDiaSelecionado.mes + 1}-${
+        primeiroDiaSelecionado.dia
       }`
     ).getTime();
     const dataFinal = new Date(
-      `${segundoDiaSelecionado.ano}-${segundoDiaSelecionado.mes + 1}-${segundoDiaSelecionado.dia
+      `${segundoDiaSelecionado.ano}-${segundoDiaSelecionado.mes + 1}-${
+        segundoDiaSelecionado.dia
       }`
     ).getTime();
     const dataAtual = new Date(`${ano}-${mes + 1}-${dia}`).getTime();
@@ -132,16 +139,16 @@ const Days = ({ month, year }: DaysProps) => {
     }
   };
 
-
-  const stylesPrimeiroSelecionado = firstSelected(segundoDiaSelecionado)
-  const stylesSegundoSelecionado = secondSelected(primeiroDiaSelecionado)
-  const stylesEntrePrimeiroESegundo = betweenFirstAndSecond()
+  const stylesPrimeiroSelecionado = firstSelected(segundoDiaSelecionado);
+  const stylesSegundoSelecionado = secondSelected(primeiroDiaSelecionado);
+  const stylesEntrePrimeiroESegundo = betweenFirstAndSecond();
 
   return (
     <table className="flex flex-col gap-1">
       <WeekDays />
-      <tbody className="h-280px] flex w-[280px] flex-col gap-2 bg-amber-600">
-        <FirstLineDays numeroDeDiasDoMesAnterior={numeroDeDiasDoMesAnterior}
+      <tbody className="flex  w-[280px] flex-col gap-2 text-light-primary   dark:text-dark-primary">
+        <FirstLineDays
+          numeroDeDiasDoMesAnterior={numeroDeDiasDoMesAnterior}
           diasDoMesAnterior={diasDoMesAnterior}
           month={month}
           year={year}
@@ -153,7 +160,8 @@ const Days = ({ month, year }: DaysProps) => {
           handleDiasEntrePrimeiroESegundo={handleDiasEntrePrimeiroESegundo}
           handleDiasSelecionados={handleDiasSelecionados}
         />
-        <NextLinesDays numeroDeDiasDoMesAnterior={numeroDeDiasDoMesAnterior}
+        <NextLinesDays
+          numeroDeDiasDoMesAnterior={numeroDeDiasDoMesAnterior}
           month={month}
           year={year}
           stylesEntrePrimeiroESegundo={stylesEntrePrimeiroESegundo}
