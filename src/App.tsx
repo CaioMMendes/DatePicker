@@ -5,7 +5,6 @@ import Months from "./components/Months";
 import Switch from "./components/Switch";
 import Years from "./components/Years";
 import { diasSelecionadosContext } from "./contexts/DiasSelecionados";
-import { monthsName } from "./utils/MonthsName";
 interface MonthState {
   name: string[];
   number: number;
@@ -65,7 +64,7 @@ function App() {
   return (
     <div className={`${darkMode === "true" ? "dark" : ""}`}>
       <div
-        className={` bg- flex h-screen w-screen flex-col items-center justify-center gap-1 bg-light dark:bg-dark`}
+        className={` bg- flex h-screen w-screen flex-col items-center justify-center gap-2 bg-light dark:bg-dark`}
       >
         <div className="flex items-center justify-center">
           <Switch handleDarkMode={handleDarkMode} />
