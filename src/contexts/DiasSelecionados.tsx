@@ -61,18 +61,6 @@ interface IDiasSelecionadosContext {
 export const DiasSelecionadosProvider = ({
   children,
 }: IDiasSelecionadosContext) => {
-  // const [period, setPeriod] = useState({
-  //   dayOne: "",
-  //   dayTwo: "",
-  //   month: "Jan",
-  //   year: "2020",
-  // });
-  // const [period, setPeriod] = useState<{
-  //   dayOne: string;
-  //   dayTwo?: string;
-  //   month: string;
-  //   year: string;
-  // }>({ dayOne: "", dayTwo: "", month: "", year: "" });
   const [primeiroDiaSelecionado, setPrimeiroDiaSelecionado] =
     useState<Dia | null>(null);
   const [segundoDiaSelecionado, setSegundoDiaSelecionado] =
