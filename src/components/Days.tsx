@@ -67,11 +67,26 @@ const Days = ({ month, year }: DaysProps) => {
     );
 
     //Não da para comparar datas sem usar getTime ou algo assim usando ===
-    // if (currentDay.getTime() === firstDay.getTime()) {
-    //   return setPrimeiroDiaSelecionado(null);
-    // } else if (currentDay.getTime() === secondDay.getTime()) {
-    //   return setSegundoDiaSelecionado(null);
-    // }
+    if (
+      currentDay.getTime() === firstDay.getTime() &&
+      primeiroDiaSelecionado !== null /* &&
+      segundoDiaSelecionado === null */
+    ) {
+      // return;
+
+      if (primeiroDiaSelecionado !== null && segundoDiaSelecionado !== null) {
+        return setSegundoDiaSelecionado(null);
+      }
+
+      return setPrimeiroDiaSelecionado(null);
+    } else if (
+      currentDay.getTime() === secondDay.getTime() &&
+      primeiroDiaSelecionado === null &&
+      segundoDiaSelecionado === null
+    ) {
+      return;
+      // return setSegundoDiaSelecionado(null);
+    }
 
     if (primeiroDiaSelecionado === null) {
       if (secondDay.getTime() < currentDay.getTime()) {

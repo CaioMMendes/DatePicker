@@ -63,7 +63,7 @@ function App() {
   return (
     <div className={`${darkMode === "true" ? "dark" : ""}`}>
       <div
-        className={` bg- flex h-screen w-screen flex-col items-center gap-2 bg-light pt-10 dark:bg-dark`}
+        className={`flex h-screen w-screen select-none flex-col items-center gap-2 bg-light pt-10 dark:bg-dark`}
       >
         <div className="flex items-center justify-center">
           <Switch handleDarkMode={handleDarkMode} />
