@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'switchDark': 'url(./MoonStars.svg)',
-        'switchLight': 'url(./Sun.svg)',
+        'switchDark': 'url(/MoonStars.svg)',
+        'switchLight': 'url(/Sun.svg)',
       },
       backgroundColor: {
         'dark': '#2f2f32',

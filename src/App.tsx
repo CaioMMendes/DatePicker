@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import "./App.css";
 import Days from "./components/Days";
 import Months from "./components/Months";
 import Switch from "./components/Switch";
@@ -64,7 +63,7 @@ function App() {
   return (
     <div className={`${darkMode === "true" ? "dark" : ""}`}>
       <div
-        className={` bg- flex h-screen w-screen flex-col items-center justify-center gap-2 bg-light dark:bg-dark`}
+        className={` bg- flex h-screen w-screen flex-col items-center gap-2 bg-light pt-10 dark:bg-dark`}
       >
         <div className="flex items-center justify-center">
           <Switch handleDarkMode={handleDarkMode} />
@@ -83,7 +82,11 @@ dark:bg-calendar-dark"
               onClick={
                 !calendar
                   ? () => {
-                      setYear(year - 1);
+                      if (showYear) {
+                        setYear(year - 9);
+                      } else {
+                        setYear(year - 1);
+                      }
                     }
                   : () => {
                       if (month.name[0] === "janeiro") {
@@ -128,7 +131,11 @@ dark:bg-calendar-dark"
               onClick={
                 !calendar
                   ? () => {
-                      setYear(year + 1);
+                      if (showYear) {
+                        setYear(year + 9);
+                      } else {
+                        setYear(year + 1);
+                      }
                     }
                   : () => {
                       if (month.name[0] === "dezembro") {

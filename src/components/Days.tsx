@@ -50,14 +50,24 @@ const Days = ({ month, year }: DaysProps) => {
     nomeMes: string,
     ano: number
   ) => {
-    const currentDay = new Date(`"${ano}-${mes}-${dia}"`);
+    const currentDay = new Date(`"${ano}-${mes + 1}-${dia}"`);
     const firstDay = new Date(
-      `${primeiroDiaSelecionado?.ano}-${primeiroDiaSelecionado?.mes}-${primeiroDiaSelecionado?.dia}`
+      `${primeiroDiaSelecionado?.ano}-${
+        primeiroDiaSelecionado?.mes !== undefined
+          ? primeiroDiaSelecionado?.mes + 1
+          : undefined
+      }-${primeiroDiaSelecionado?.dia}`
     );
     const secondDay = new Date(
-      `${segundoDiaSelecionado?.ano}-${segundoDiaSelecionado?.mes}-${segundoDiaSelecionado?.dia}`
+      `${segundoDiaSelecionado?.ano}-${
+        segundoDiaSelecionado?.mes !== undefined
+          ? segundoDiaSelecionado?.mes + 1
+          : undefined
+      }-${segundoDiaSelecionado?.dia}`
     );
-
+    console.log("currentDay", currentDay, currentDay.getTime());
+    console.log("firstDay", firstDay, firstDay.getTime());
+    console.log("secondDay", secondDay, secondDay.getTime());
     //Não da para comparar datas sem usar getTime ou algo assim usando ===
     if (currentDay.getTime() === firstDay.getTime()) {
       return setPrimeiroDiaSelecionado(null);
