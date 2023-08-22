@@ -65,15 +65,13 @@ const Days = ({ month, year }: DaysProps) => {
           : undefined
       }-${segundoDiaSelecionado?.dia}`
     );
-    console.log("currentDay", currentDay, currentDay.getTime());
-    console.log("firstDay", firstDay, firstDay.getTime());
-    console.log("secondDay", secondDay, secondDay.getTime());
+
     //Não da para comparar datas sem usar getTime ou algo assim usando ===
-    if (currentDay.getTime() === firstDay.getTime()) {
-      return setPrimeiroDiaSelecionado(null);
-    } else if (currentDay.getTime() === secondDay.getTime()) {
-      return setSegundoDiaSelecionado(null);
-    }
+    // if (currentDay.getTime() === firstDay.getTime()) {
+    //   return setPrimeiroDiaSelecionado(null);
+    // } else if (currentDay.getTime() === secondDay.getTime()) {
+    //   return setSegundoDiaSelecionado(null);
+    // }
 
     if (primeiroDiaSelecionado === null) {
       if (secondDay.getTime() < currentDay.getTime()) {
