@@ -50,20 +50,20 @@ const Days = ({ month, year }: DaysProps) => {
     nomeMes: string,
     ano: number
   ) => {
-    const currentDay = new Date(`"${ano}-${mes + 1}-${dia}"`);
+    const currentDay = new Date(`"${ano}/${mes + 1}/${dia}"`);
     const firstDay = new Date(
-      `${primeiroDiaSelecionado?.ano}-${
+      `${primeiroDiaSelecionado?.ano}/${
         primeiroDiaSelecionado?.mes !== undefined
           ? primeiroDiaSelecionado?.mes + 1
           : undefined
-      }-${primeiroDiaSelecionado?.dia}`
+      }/${primeiroDiaSelecionado?.dia}`
     );
     const secondDay = new Date(
-      `${segundoDiaSelecionado?.ano}-${
+      `${segundoDiaSelecionado?.ano}/${
         segundoDiaSelecionado?.mes !== undefined
           ? segundoDiaSelecionado?.mes + 1
           : undefined
-      }-${segundoDiaSelecionado?.dia}`
+      }/${segundoDiaSelecionado?.dia}`
     );
 
     //Não da para comparar datas sem usar getTime ou algo assim usando ===
