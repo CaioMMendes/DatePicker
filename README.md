@@ -24,7 +24,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
   
 ## 📆  Exemplo
 
-<img   src="https://cdn.discordapp.com/attachments/863259740808806421/1144500879555305522/Design_sem_nome_1.gif" alt="Gif do projeto" height="400" width="400" title='Exemplo do projeto' />
+<img  title="Gif do projeto " src="./public/github/gif.gif" alt="Gif do projeto "  height="338" width="600" />
 
 ## ✏ Para iniciar o projeto basta utilizar os seguintes comandos
 
@@ -41,7 +41,3 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 ## 💻 O projeto pode ser vizualizado acessando o seguinte link
 
 <https://date-picker-three.vercel.app/>
-
-## 👀 Exemplo
-
-<img  title="Gif do projeto " src="./public/github/gif.gif" alt="Gif do projeto "  height="338" width="600" />
