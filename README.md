@@ -1,7 +1,12 @@
 
 <div align="center" style="justify-content:center; display:flex; flex-direction:column; gap:20px">
-<img  title="Imagem do projeto dark" src="https://cdn.discordapp.com/attachments/1124406159328170034/1143335082648686622/image.png" alt="Imagem do projeto dark"  />
-<img  title="Imagem do projeto light" src="https://cdn.discordapp.com/attachments/1124406159328170034/1143334973349302323/image.png" alt="Imagem do projeto light"  />
+<img  title="Imagem do projeto desktop dark" src="./public/github/desktop-dark.png" alt="Imagem do projeto desktop dark"  />
+<img  title="Imagem do projeto desktop light" src="./public/github/desktop-light.png" alt="Imagem do projeto desktop light"  />
+
+</div>
+<div align="center" style="justify-content:center; display:flex; flex-direction:row; gap:20px">
+<img  title="Imagem do projeto mobile dark " src="./public/github/mobile-dark.png" alt="Imagem do projeto mobile dark"  />
+<img  title="Imagem do projeto mobile light" src="./public/github/mobile-light.png" alt="Imagem do projeto mobile light"  />
 
 </div>
 
@@ -36,3 +41,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 ## 💻 O projeto pode ser vizualizado acessando o seguinte link
 
 <https://date-picker-three.vercel.app/>
+
+## 👀 Exemplo
+
+<img  title="Gif do projeto " src="./public/github/gif.gif" alt="Gif do projeto "  height="338" width="600" />
