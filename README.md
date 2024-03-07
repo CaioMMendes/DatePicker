@@ -22,9 +22,9 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - [Tailwindcss](https://tailwindcss.com/)
 - [Typescript](https://www.typescriptlang.org/)
   
-## 📆  Example
+## 📆  Exemplo
 
-<img  title="Imagem do projeto dark" src="https://cdn.discordapp.com/attachments/863259740808806421/1144500879555305522/Design_sem_nome_1.gif" alt="Imagem do projeto dark" height="400" width="400" title='Exemplo do projeto' />
+<img   src="https://cdn.discordapp.com/attachments/863259740808806421/1144500879555305522/Design_sem_nome_1.gif" alt="Gif do projeto" height="400" width="400" title='Exemplo do projeto' />
 
 ## ✏ Para iniciar o projeto basta utilizar os seguintes comandos
 
