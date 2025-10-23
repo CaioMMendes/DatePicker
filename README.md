@@ -12,7 +12,7 @@
 
 ## 📌 Sobre
 
-**DatePicker** foi um projeto realizado para aprendizado, onde não foi utilizado nenhuma lib para gerenciamento do calendário ou da seleção das datas.
+**DatePicker** foi um projeto de estudo, onde não foi utilizado nenhuma lib para gerenciamento do calendário ou da seleção das datas.
 
 ## 🚀 Tecnologias utilizadas
 
